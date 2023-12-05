@@ -6,7 +6,7 @@ const { authMiddleware} = require('./utils/auth')
 
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express')
-const { typeDefs, resolvers } = require
+const { typeDefs, resolvers } = require('./schemas')
 
 // create new apollo servers
 const server = new ApolloServer({
@@ -32,6 +32,8 @@ if (process.env.NODE_ENV === 'production') {
 
 db.once('open', () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+  // log where we can go test our gwl api
+  console.log(`use graphql at http://localhost:${PORT}${server.graphqlPath}`)
 });
 }
 startApolloServer(typeDefs, resolvers)

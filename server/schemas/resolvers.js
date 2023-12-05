@@ -2,6 +2,7 @@ const { User } = require('../models')
 const { AuthenticationError } = require('apollo-server-express')
 const { signToken } = require('../utils/auth')
 
+
 const resolvers = {
     Query: {
         me: async (parents, args, context) => {
@@ -53,7 +54,7 @@ const resolvers = {
                     { new: true}
                 )
 
-                return updateUser
+                return updateUser;
             }
 
             throw new AuthenticationError('you need to be logged in!')
@@ -68,11 +69,12 @@ const resolvers = {
                         { new: true}
                     )
     
-                    return updateUser
+                    return updateUser;
+                }
             }
 
             throw new AuthenticationError('you need to be logged in!')
         }
         
-    }
+    },
 }
